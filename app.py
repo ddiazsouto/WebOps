@@ -12,7 +12,7 @@ db=SQLAlchemy(app)
 
 @app.route('/')
 def homey():
-    return '<html><head><h2><center>Head of<center></h2></head><body style="background-color:blue"><br><hr><br><b>Dan</b></body></html>'
+    return render_template('home.html', title='Home')
 
 
 if __name__=='__main__':

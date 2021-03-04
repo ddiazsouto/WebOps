@@ -25,6 +25,8 @@ from tables import Person, House, ownership
 
 # db.session.commit()
 
-ls = Person.query.get(3)
+ls = Person.query.first()
+ls.name='John'
 
-print(ls.name)
+
+db.session.commit()
