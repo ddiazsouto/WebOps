@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<body>
+    <center><h1>My name here<br>Dan</h1>
+    <p>
+        {% for person in people %}
+        {{person}} <br>
+        {% endfor %}
+    </p>
+    </center>
+</body>
+
+{% endblock body %}

@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<center>
+<p>My name is Dan</p>
+<div>
+    <h1>Dan</h1>
+    <div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            {{ form.user.label }} {{ form.user }}
+            <br>
+            {{ form.Password.label }} {{ form.Password }}
+            <br>
+            {{ form.numb.label}}    {{form.numb}}
+            <br>
+            {{form.deci.label}} {{form.deci}}
+            <br>
+
+            {{ form.submit }}
+            <h1>{{ message }}</h1>
+        </form>
+</div>
+</center>
+
+{% endblock body %}
+
