@@ -4,7 +4,7 @@ class Person(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     surname = db.Column(db.String(30), nullable=True)
-    home = db.relationship('House', backref='person')
+    #home = db.relationship('House', backref='person')
     owner = db.relationship('ownership', backref='person')
 
 class House(db.Model):
@@ -12,7 +12,7 @@ class House(db.Model):
     type = db.Column(db.String(25), nullable=False)
     street = db.Column(db.String(15), nullable=False)
     market_price = db.Column(db.Float, nullable=True)
-    owner_id= db.Column(db.Integer, db.ForeignKey('person.id'), nullable=False)
+    #owner_id= db.Column(db.Integer, db.ForeignKey('person.id'), nullable=False)
     owner = db.relationship('ownership', backref='house')
 
 class ownership(db.Model):
@@ -21,13 +21,22 @@ class ownership(db.Model):
     propperty = db.Column(db.Integer, db.ForeignKey('house.id'), nullable=False)
     price = db.Column(db.Integer, nullable=False)
 
+db.drop_all()
+db.create_all()
 
 
+DataIn = Person(name='Daniel', surname='Diaz')
+MoreData = Person(name='Wesley', surname='Lum')
+ExtraData = House(type='Detached', street='Hendon Lane', market_price='25.7')
 
+db.session.add(ExtraData)
+db.session.add(MoreData)
+db.session.add(DataIn)
+db.session.commit()
 
-# DataIn = Person(name='Daniel', surname='Diaz Souto')
-# MoreData = Person(name='Nadia', surname='Peruffo')
-# ExtraData = Person(name='Diego', surname='Diaz Peruffo')
+a= Person.query.all()
+for i in a:
+    print(i.surname)
+    db.session.delete(i)
 
-#db.session.add(ExtraData)
-#db.session.commit()
+db.session.commit()
