@@ -1,1 +1,1 @@
-source venv/bin/activate
+sudo source venv/bin/activate
